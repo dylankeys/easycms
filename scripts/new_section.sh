@@ -14,7 +14,8 @@ while [ "$1" != "" ]; do
 done
 
 create_section() {
-    mkdir $DATAROOT/sections/$SECTION
+    	mkdir $DATAROOT/sections/$SECTION
+	symlink_section
 }
 
 symlink_section() {
@@ -22,5 +23,3 @@ symlink_section() {
 }
 
 create_section
-
-
