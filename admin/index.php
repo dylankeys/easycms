@@ -73,8 +73,8 @@
       </div>
    
       <div class="list-group slideshow-left">
-        <a href="addsection/" class="list-group-item list-group-item-action">Add sections</a>
-        <a href="addpage/" class="list-group-item list-group-item-action">Add pages</a>
+        <a href="add/section/" class="list-group-item list-group-item-action">Section Management</a>
+        <a href="add/content/" class="list-group-item list-group-item-action">Content Management</a>
       </div>
 
     </div>

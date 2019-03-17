@@ -2,6 +2,17 @@
   session_start();
   include("../../../config.php");
   include("../../../lib.php");
+
+  if (isset($_POST["name"])) {
+    $section = $_POST["name"];
+    $position = 99;
+
+    $dbQuery=$db->prepare("INSERT INTO `sections` VALUES(null,:name,:position)");
+    $dbParams = array('name'=>$section,'position'=>$position);
+    $dbQuery->execute($dbParams);
+
+    header("Location: index.php?success=1");
+  }
 ?>
 <!doctype html>
 <!-- EasyCMS -->
@@ -63,19 +74,48 @@
       </div>
      
       <br>
-        <h1>Settings</h1>
-   
-      <div class="jumbotron jumbotron-fluid slideshow-right">
-        <div class="container-jumbo">
-          <h1 class="display-4">EasyCMS (alpha)</h1>
-          <p class="lead">Version: 0.1</p>
+      <h1>Section management</h1>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true">Add a section</a>
+          <a class="nav-item nav-link" id="nav-sort-tab" data-toggle="tab" href="#nav-sort" role="tab" aria-controls="nav-sort" aria-selected="false">Sort existing sections</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+        </div>
+      </nav>
+
+
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
+
+          <form action="index.php" method="post">
+            <div class="form-group">
+              <label for="name">Section name</label>
+              <input class="form-control form-control-lg" type="text" id="name" name="name" placeholder=".form-control-lg">
+            </div>
+            <input type="submit" class="form-control">
+          </form>
+
+        </div>
+
+        <div class="tab-pane fade" id="nav-sort" role="tabpanel" aria-labelledby="nav-sort-tab">
+          <h3>Sections</h3>
+          <?php
+            $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
+            $dbQuery->execute();
+            //$dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
+
+            while ($dbRow = $dbQuery->fetch(PDO::FETCH_ASSOC))
+            {
+              $name=$dbRow["name"];
+
+              echo '<p>'.$name.'</p><br>';
+            }
+          ?>
         </div>
       </div>
-   
-      <div class="list-group slideshow-left">
-        <a href="addsection/" class="list-group-item list-group-item-action">Add sections</a>
-        <a href="addpage/" class="list-group-item list-group-item-action">Add pages</a>
-      </div>
+
+      
+
 
     </div>
 
