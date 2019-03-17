@@ -213,7 +213,7 @@
 
     </main><!-- /.container -->
 
-    <footer class="blog-footer">
+    <footer class="blog-footer footer">
       <p>&copy; <?php echo date('Y'); ?> Pure & True Holistics | Site powered by <a href="https://dylankeys.com">EasyCMS</a></p>
       <p>
         <a href="#">Back to top</a>
