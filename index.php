@@ -33,10 +33,10 @@
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
+            <a class="text-muted" href="#">Sign-up for updates</a>
           </div>
           <div class="col-4 text-center">
-            <img src="pix/logo.png" alt="Pure and True Holistic Therapies logo" />
+            <img class="logo" src="pix/logo.png" alt="Pure and True Holistic Therapies logo" />
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="btn btn-sm btn-outline-secondary" href="#">Book now</a>

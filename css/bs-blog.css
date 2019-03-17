@@ -1,3 +1,8 @@
+/* Custom Styles */
+.logo {
+  height: 150px;
+}
+
 /* stylelint-disable selector-list-comma-newline-after */
 
 .blog-header {
