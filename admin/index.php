@@ -62,23 +62,21 @@
         </nav>
       </div>
 
-      <div class="container">
-     
-        <br>
-          <h1>Settings</h1>
-     
-        <div class="jumbotron jumbotron-fluid slideshow-right">
-          <div class="container-jumbo">
-            <h1 class="display-4">EasyCMS (alpha)</h1>
-            <p class="lead">Version: 0.1</p>
-          </div>
-        </div>
-     
-        <div class="list-group slideshow-left">
-          <a href="add/section/" class="list-group-item list-group-item-action">Add sections</a>
-          <a href="add/page/" class="list-group-item list-group-item-action">Add pages</a>
+      <br>
+      <h1>Settings</h1>
+   
+      <div class="jumbotron jumbotron-fluid slideshow-right">
+        <div class="container-jumbo">
+          <h1 class="display-4">EasyCMS (alpha)</h1>
+          <p class="lead">Version: 0.1</p>
         </div>
       </div>
+   
+      <div class="list-group slideshow-left">
+        <a href="addsection/" class="list-group-item list-group-item-action">Add sections</a>
+        <a href="addpage/" class="list-group-item list-group-item-action">Add pages</a>
+      </div>
+
     </div>
 
     <footer class="blog-footer footer">
