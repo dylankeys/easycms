@@ -1,7 +1,7 @@
 <?php
   session_start();
-  include("config.php");
-  include("lib.php");
+  include("../config.php");
+  include("../lib.php");
 ?>
 <!doctype html>
 <!-- EasyCMS -->
@@ -19,13 +19,13 @@
 
     <title>Pure & True | Holistic Therapies</title>
 
-    <link rel="icon" href="pix/favicon.gif" type="image/gif">
+    <link rel="icon" href="../pix/favicon.gif" type="image/gif">
 
     <!-- EasyCMS CSS -->
-    <link rel="stylesheet" type="text/css" href="css/easycms.css">
+    <link rel="stylesheet" type="text/css" href="../css/easycms.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/bs-blog.css">
+    <link rel="stylesheet" type="text/css" href="../css/bs-blog.css">
 
   </head>
   <body>
@@ -36,7 +36,7 @@
             <a class="text-muted" href="#">Sign-up for updates</a>
           </div>
           <div class="col-4 text-center">
-            <img class="logo" src="pix/logo.png" alt="Pure and True Holistic Therapies logo" />
+            <img class="logo" src="../pix/logo.png" alt="Pure and True Holistic Therapies logo" />
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="btn btn-sm btn-outline-secondary" href="#">Book now</a>
