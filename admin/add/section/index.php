@@ -11,7 +11,7 @@
     $dbParams = array('name'=>$section,'position'=>$position);
     $dbQuery->execute($dbParams);
 
-    exec($conf->wwwroot."/scripts/new_section.sh --section '".$name."' --dataroot '".$conf->dataroot."'");
+    exec($conf->dataroot."/scripts/new_section.sh --section '".$name."' --dataroot '".$conf->dataroot."' --wwwroot '".$conf->wwwroot."'");
     header("Location: index.php?success=1");
   }
 ?>
