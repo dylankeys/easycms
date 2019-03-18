@@ -86,6 +86,7 @@
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
 
+          <br>
           <form action="index.php" method="post">
             <div class="form-group">
               <label for="name">Section name</label>
@@ -97,6 +98,7 @@
         </div>
 
         <div class="tab-pane fade" id="nav-sort" role="tabpanel" aria-labelledby="nav-sort-tab">
+          <br>
           <h3>Sections</h3>
           <?php
             $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
@@ -112,6 +114,7 @@
           ?>
         </div>
       </div>
+      <br>
 
       
 
