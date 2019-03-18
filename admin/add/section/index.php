@@ -60,8 +60,7 @@
         <nav class="nav d-flex justify-content-between">
           <?php
             $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
-            $dbParams = array('id'=>$userID);
-            $dbQuery->execute($dbParams);
+            $dbQuery->execute();
             //$dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
 
             while ($dbRow = $dbQuery->fetch(PDO::FETCH_ASSOC))
@@ -80,7 +79,6 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true">Add a section</a>
           <a class="nav-item nav-link" id="nav-sort-tab" data-toggle="tab" href="#nav-sort" role="tab" aria-controls="nav-sort" aria-selected="false">Sort existing sections</a>
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
         </div>
       </nav>
 
@@ -91,7 +89,7 @@
           <form action="index.php" method="post">
             <div class="form-group">
               <label for="name">Section name</label>
-              <input class="form-control form-control-lg" type="text" id="name" name="name" placeholder=".form-control-lg">
+              <input class="form-control form-control-lg" type="text" id="name" name="name">
             </div>
             <input type="submit" class="form-control">
           </form>

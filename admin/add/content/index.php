@@ -48,8 +48,7 @@
         <nav class="nav d-flex justify-content-between">
           <?php
             $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
-            $dbParams = array('id'=>$userID);
-            $dbQuery->execute($dbParams);
+            $dbQuery->execute();
             //$dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
 
             while ($dbRow = $dbQuery->fetch(PDO::FETCH_ASSOC))
