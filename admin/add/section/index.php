@@ -31,7 +31,7 @@
 
     if ($_GET["action"] == "up") {
       // Define the new position
-      $new_pos = ($existing_pos + 1);
+      $new_pos = ($existing_pos - 1);
 
       // Get the section currently in the new position
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
@@ -55,7 +55,7 @@
     }
     else if ($_GET["action"] == "down") {
       // Define the new position
-      $new_pos = ($existing_pos - 1);
+      $new_pos = ($existing_pos + 1);
 
       // Get the section currently in the new position
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
