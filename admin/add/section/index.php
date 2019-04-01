@@ -158,7 +158,7 @@
           <br>
           <h3>Sections</h3>
           <?php
-            $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
+            $dbQuery=$db->prepare("SELECT id, name FROM `sections` ORDER BY `position` ASC");
             $dbQuery->execute();
             //$dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
 
@@ -167,7 +167,7 @@
               $section_id = $dbRow["id"];
               $name = $dbRow["name"];
 
-              echo '<p>'.$name.'</p>&nbsp;&nbsp;&nbsp;<a href="?action=up&sid='.$section_id.'"><i class="fas fa-chevron-up"></i></a>&nbsp;<a href="?action=down&sid='.$section_id.'"><i class="fas fa-chevron-down"></i></a>&nbsp;<a href="?action=delete&sid='.$section_id.'"><i class="fas fa-trash"></i></a>';
+              echo '<p>'.$name.'&nbsp;&nbsp;&nbsp;<a href="?action=up&sid='.$section_id.'"><i class="fas fa-chevron-up"></i></a>&nbsp;<a href="?action=down&sid='.$section_id.'"><i class="fas fa-chevron-down"></i></a>&nbsp;<a href="?action=delete&sid='.$section_id.'"><i class="fas fa-trash"></i></a></p>';
             }
           ?>
         </div>
