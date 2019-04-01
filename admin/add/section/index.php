@@ -5,7 +5,12 @@
 
   if (isset($_POST["name"])) {
     $section = $_POST["name"];
-    $position = 99;
+    
+    $dbQuery=$db->prepare("SELECT position FROM `sections` ORDER BY position DESC");
+    $dbQuery->execute();
+    $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
+
+    $position = ($dbRow["position"]+1);
 
     $dbQuery=$db->prepare("INSERT INTO `sections` VALUES(null,:name,:position)");
     $dbParams = array('name'=>$section,'position'=>$position);
@@ -74,6 +79,7 @@
     }
     else if ($_GET["action"] == "delete") {
       $sections = array();
+      $position = 1;
 
       // Delete the position
       $dbQuery=$db->prepare("DELETE FROM `sections` WHERE id = :id");
@@ -91,7 +97,6 @@
       // Loop through sections in order of position
       // Refactor positions following deleted element
       foreach ($sections as $section) {
-        $position = 1;
 
         $dbQuery=$db->prepare("UPDATE `sections` SET position = :position WHERE id = :id");
         $dbParams = array('id'=>$section,'position'=>$position);
