@@ -27,7 +27,7 @@
     $dbQuery->execute($dbParams);
     $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
 
-    $existing_pos = $dbRow["id"];
+    $existing_pos = $dbRow["position"];
 
     if ($_GET["action"] == "up") {
       // Define the new position
