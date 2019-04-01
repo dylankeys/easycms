@@ -11,7 +11,62 @@
     $dbParams = array('name'=>$section,'position'=>$position);
     $dbQuery->execute($dbParams);
 
-    header("Location: index.php?success=1");
+    header("Location: index.php?success=created");
+  }
+  else if (isset($_POST["action"])) {
+    $section_id = $_POST["sid"];
+
+    $dbQuery=$db->prepare("SELECT position FROM `sections` WHERE id = :id");
+    $dbParams = array('id'=>$section_id);
+    $dbQuery->execute($dbParams);
+    $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
+
+    $existing_pos = $dbRow["id"];
+
+    if ($_POST["action"] == "up") {
+      $new_pos = ($existing_pos + 1);
+
+      $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
+      $dbParams = array('newpos'=>$new_pos);
+      $dbQuery->execute($dbParams);
+      $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
+
+      $other_section = $dbRow["id"];
+
+      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :newpos WHERE id = :id");
+      $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
+      $dbQuery->execute($dbParams);
+
+      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :oldpos WHERE id = :id");
+      $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
+      $dbQuery->execute($dbParams);
+
+      header("Location: index.php?success=up");
+    }
+    else if ($_POST["action"] == "down") {
+      $new_pos = ($existing_pos - 1);
+
+      $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
+      $dbParams = array('newpos'=>$new_pos);
+      $dbQuery->execute($dbParams);
+      $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
+
+      $other_section = $dbRow["id"];
+
+      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :newpos WHERE id = :id");
+      $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
+      $dbQuery->execute($dbParams);
+
+      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :oldpos WHERE id = :id");
+      $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
+      $dbQuery->execute($dbParams);
+
+      header("Location: index.php?success=down");
+    }
+    else if ($_POST["action"] == "delete") {
+
+      header("Location: index.php?success=deleted");
+    }
   }
 ?>
 <!doctype html>
@@ -27,6 +82,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <title>Pure & True | Holistic Therapies</title>
 
@@ -106,9 +164,10 @@
 
             while ($dbRow = $dbQuery->fetch(PDO::FETCH_ASSOC))
             {
-              $name=$dbRow["name"];
+              $section_id = $dbRow["id"];
+              $name = $dbRow["name"];
 
-              echo '<p>'.$name.'</p>';
+              echo '<p>'.$name.'</p>&nbsp;&nbsp;&nbsp;<a href="?action=up&sid='.$section_id.'"><i class="fas fa-chevron-up"></i></a>&nbsp;<a href="?action=down&sid='.$section_id.'"><i class="fas fa-chevron-down"></i></a>&nbsp;<a href="?action=delete&sid='.$section_id.'"><i class="fas fa-trash"></i></a>';
             }
           ?>
         </div>
