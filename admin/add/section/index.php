@@ -16,6 +16,7 @@
   else if (isset($_GET["action"])) {
     $section_id = $_GET["sid"];
 
+    // Get the section's id
     $dbQuery=$db->prepare("SELECT position FROM `sections` WHERE id = :id");
     $dbParams = array('id'=>$section_id);
     $dbQuery->execute($dbParams);
@@ -24,8 +25,10 @@
     $existing_pos = $dbRow["id"];
 
     if ($_GET["action"] == "up") {
+      // Define the new position
       $new_pos = ($existing_pos + 1);
 
+      // Get the section currently in the new position
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
       $dbParams = array('newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
@@ -33,10 +36,12 @@
 
       $other_section = $dbRow["id"];
 
+      // Move section to new position
       $dbQuery=$db->prepare("UPDATE `sections` SET position = :newpos WHERE id = :id");
       $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
 
+      // Move section that lived in the new position to the now unoccupied old position
       $dbQuery=$db->prepare("UPDATE `sections` SET position = :oldpos WHERE id = :id");
       $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
       $dbQuery->execute($dbParams);
@@ -44,19 +49,23 @@
       header("Location: index.php?success=up");
     }
     else if ($_GET["action"] == "down") {
+      // Define the new position
       $new_pos = ($existing_pos - 1);
 
+      // Get the section currently in the new position
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
       $dbParams = array('newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
       $dbRow=$dbQuery->fetch(PDO::FETCH_ASSOC);
 
       $other_section = $dbRow["id"];
-
+      
+      // Move section to new position
       $dbQuery=$db->prepare("UPDATE `sections` SET position = :newpos WHERE id = :id");
       $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
 
+      // Move section that lived in the new position to the now unoccupied old position
       $dbQuery=$db->prepare("UPDATE `sections` SET position = :oldpos WHERE id = :id");
       $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
       $dbQuery->execute($dbParams);
@@ -64,6 +73,32 @@
       header("Location: index.php?success=down");
     }
     else if ($_GET["action"] == "delete") {
+      $sections = array();
+
+      // Delete the position
+      $dbQuery=$db->prepare("DELETE FROM `sections` WHERE id = :id");
+      $dbParams = array('id'=>$section_id);
+      $dbQuery->execute($dbParams);
+
+      // Get sections in order of position
+      $dbQuery=$db->prepare("SELECT id FROM `sections` ORDER BY `position` ASC");
+      $dbQuery->execute();
+      while ($dbRow = $dbQuery->fetch(PDO::FETCH_ASSOC))
+      {
+        array_push($sections, $dbRow["id"]);
+      }
+
+      // Loop through sections in order of position
+      // Refactor positions following deleted element
+      foreach ($sections as $section) {
+        $position = 1;
+
+        $dbQuery=$db->prepare("UPDATE `sections` SET position = :position WHERE id = :id");
+        $dbParams = array('id'=>$section,'position'=>$position);
+        $dbQuery->execute($dbParams);
+
+        $position++;
+      }
 
       header("Location: index.php?success=deleted");
     }
