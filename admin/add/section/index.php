@@ -13,8 +13,8 @@
 
     header("Location: index.php?success=created");
   }
-  else if (isset($_POST["action"])) {
-    $section_id = $_POST["sid"];
+  else if (isset($_GET["action"])) {
+    $section_id = $_GET["sid"];
 
     $dbQuery=$db->prepare("SELECT position FROM `sections` WHERE id = :id");
     $dbParams = array('id'=>$section_id);
@@ -23,7 +23,7 @@
 
     $existing_pos = $dbRow["id"];
 
-    if ($_POST["action"] == "up") {
+    if ($_GET["action"] == "up") {
       $new_pos = ($existing_pos + 1);
 
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
@@ -43,7 +43,7 @@
 
       header("Location: index.php?success=up");
     }
-    else if ($_POST["action"] == "down") {
+    else if ($_GET["action"] == "down") {
       $new_pos = ($existing_pos - 1);
 
       $dbQuery=$db->prepare("SELECT id FROM `sections` WHERE position = :newpos");
@@ -63,7 +63,7 @@
 
       header("Location: index.php?success=down");
     }
-    else if ($_POST["action"] == "delete") {
+    else if ($_GET["action"] == "delete") {
 
       header("Location: index.php?success=deleted");
     }
