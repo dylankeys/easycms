@@ -56,7 +56,7 @@
             {
               $name=$dbRow["name"];
 
-              echo '<a class="p-2 text-muted" href="'.lcfirst($name).'">'.$name.'</a>';
+              echo '<a class="p-2 text-muted" href="?s='.lcfirst($name).'">'.$name.'</a>';
             }
           ?>
         </nav>

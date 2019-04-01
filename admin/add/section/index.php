@@ -11,7 +11,6 @@
     $dbParams = array('name'=>$section,'position'=>$position);
     $dbQuery->execute($dbParams);
 
-    exec($conf->dataroot."/scripts/new_section.sh --section '".$section."' --dataroot '".$conf->dataroot."' --wwwroot '".$conf->wwwroot."'");
     header("Location: index.php?success=1");
   }
 ?>
@@ -67,7 +66,7 @@
             {
               $name=$dbRow["name"];
 
-              echo '<a class="p-2 text-muted" href="'.lcfirst($name).'">'.$name.'</a>';
+              echo '<a class="p-2 text-muted" href="?s='.lcfirst($name).'">'.$name.'</a>';
             }
           ?>
         </nav>
@@ -109,7 +108,7 @@
             {
               $name=$dbRow["name"];
 
-              echo '<p>'.$name.'</p><br>';
+              echo '<p>'.$name.'</p>';
             }
           ?>
         </div>
