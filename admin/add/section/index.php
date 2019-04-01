@@ -33,11 +33,11 @@
 
       $other_section = $dbRow["id"];
 
-      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :newpos WHERE id = :id");
+      $dbQuery=$db->prepare("UPDATE `sections` SET position = :newpos WHERE id = :id");
       $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
 
-      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :oldpos WHERE id = :id");
+      $dbQuery=$db->prepare("UPDATE `sections` SET position = :oldpos WHERE id = :id");
       $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
       $dbQuery->execute($dbParams);
 
@@ -53,11 +53,11 @@
 
       $other_section = $dbRow["id"];
 
-      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :newpos WHERE id = :id");
+      $dbQuery=$db->prepare("UPDATE `sections` SET position = :newpos WHERE id = :id");
       $dbParams = array('id'=>$section_id,'newpos'=>$new_pos);
       $dbQuery->execute($dbParams);
 
-      $dbQuery=$db->prepare("UPDATE `sections` UPDATE position = :oldpos WHERE id = :id");
+      $dbQuery=$db->prepare("UPDATE `sections` SET position = :oldpos WHERE id = :id");
       $dbParams = array('id'=>$other_section,'oldpos'=>$existing_pos);
       $dbQuery->execute($dbParams);
 
