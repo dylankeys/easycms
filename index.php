@@ -7,6 +7,6 @@
 
   $m = new Mustache_Engine;
 
-  echo $m->render($template, $data);
+  $template = file_get_contents('templates/home.mustache');
 
-  
+  echo $m->render($template, $data);
