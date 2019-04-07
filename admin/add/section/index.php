@@ -1,5 +1,8 @@
 <?php
   session_start();
+  
+  global $CFG;
+
   include($CFG->dirroot.'/config.php');
   include($CFG->dirroot.'/lib.php');
 
