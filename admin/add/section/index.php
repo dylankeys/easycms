@@ -7,6 +7,8 @@
 
   $m = new Mustache_Engine;
 
+  $template = file_get_contents($CFG->dirroot.'/templates/admin/section.mustache');
+
   if (isset($_POST["name"])) {
     $section = $_POST["name"];
     
@@ -128,3 +130,5 @@
 
     $data['sections_manage'][] = $section_data;
   }
+
+  echo $m->render($template, $data);
