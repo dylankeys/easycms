@@ -22,7 +22,7 @@
       'section_link' => $section_link
     );
 
-    $data['sections'] = $section_data;
+    $data['sections'][] = $section_data;
 
   }
 
