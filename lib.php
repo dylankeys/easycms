@@ -4,6 +4,7 @@
   global $CFG;
 
   $CFG->dirroot = __DIR__;
+  
   $data = array();
 
   $data['year'] = date('Y');
