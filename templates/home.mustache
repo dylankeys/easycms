@@ -44,9 +44,9 @@
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          {{#sections}}
+          {{#sections_nav}}
             <a class="p-2 text-muted" href="?s={{section_link}}">{{section_name}}</a>
-          {{/sections}}
+          {{/sections_nav}}
         </nav>
       </div>
 
@@ -202,7 +202,7 @@
     </main><!-- /.container -->
 
     <footer class="blog-footer footer">
-      <p>&copy; <?php echo date('Y'); ?> Pure & True Holistics | Site powered by <a href="https://dylankeys.com">EasyCMS</a></p>
+      <p>&copy; {{year}} Pure & True Holistics | Site powered by <a href="https://dylankeys.com">EasyCMS</a></p>
       <p>
         <a href="#">Back to top</a>
       </p>
