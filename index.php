@@ -26,7 +26,6 @@
 
   }
 
-  print_r($data);
-  //echo $m->render($template, $data);
+  echo $m->render($template, $data);
 
   
