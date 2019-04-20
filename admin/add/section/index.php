@@ -1,10 +1,7 @@
 <?php
   session_start();
-  
-  global $CFG;
 
-  include($CFG->dirroot.'/config.php');
-  include($CFG->dirroot.'/lib.php');
+  include($_SERVER['DOCUMENT_ROOT'].'/lib.php');
 
   require_once($CFG->dirroot.'/vendor/autoload.php');
 

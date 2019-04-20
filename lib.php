@@ -7,6 +7,7 @@
   
   $data = array();
 
+  $data['dirroot'] = $CFG->dirroot;
   $data['year'] = date('Y');
 
   $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
