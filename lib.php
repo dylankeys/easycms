@@ -4,10 +4,11 @@
   global $CFG;
 
   $CFG->dirroot = __DIR__;
+  $CFG->server_name = $_SERVER['SERVER_NAME'];
   
   $data = array();
 
-  $data['dirroot'] = $CFG->dirroot;
+  $data['server_name'] = $CFG->server_name;
   $data['year'] = date('Y');
 
   $dbQuery=$db->prepare("SELECT `name` FROM `sections` ORDER BY `position` ASC");
