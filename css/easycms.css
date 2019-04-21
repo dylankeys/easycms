@@ -13,3 +13,23 @@
 .footer {
   clear: both;
 }
+
+.bg-primary {
+	background-color: #008f22 !important;
+	color: #ffffff !important;
+}
+
+.bg-secondary {
+	background-color: #ffffff !important;
+	color: #008f22 !important;
+}
+
+.btn-primary {
+	background-color: #008f22 !important;
+	color: #ffffff !important;
+}
+
+.btn-secondary {
+	background-color: #ffffff !important;
+	color: #008f22 !important;
+}

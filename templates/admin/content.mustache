@@ -45,28 +45,22 @@
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
           {{#sections_nav}}
-            <a class="p-2 text-muted" href="?s={{section_link}}">{{section_name}}</a>
+            <a class="p-2 text-muted" href="{{wwwroot}}/?s={{section_link}}">{{section_name}}</a>
           {{/sections_nav}}
         </nav>
       </div>
      
       <br>
       <h1>Content management</h1>
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-sort-tab" data-toggle="tab" href="#nav-sort" role="tab" aria-controls="nav-sort" aria-selected="true">Sort existing sections</a>
-          <a class="nav-item nav-link" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="false">Add a section</a>
-        </div>
-      </nav>
 
       {{#sections_manage}}
         <div class="card text-white bg-primary mb-3">
-          <div class="card-header"><h5>{{section_name}}</h5><p>&nbsp;&nbsp;&nbsp;<a href="?action=edit&sid={{section_id}}"><i class="far fa-edit"></i></a></p></div>
+          <div class="card-header"><h5>{{section_name}}&nbsp;&nbsp;&nbsp;<a href="?action=edit&sid={{section_id}}"><i class="far fa-edit"></i></a></h5></div>
           <div class="card-body">
             {{#content_manage}}
               <p class="card-text">{{content_name}}&nbsp;&nbsp;&nbsp;<a href="?action=edit&cid={{content_id}}"><i class="far fa-edit"></i></a>&nbsp;<a href="?action=delete&cid={{content_id}}"><i class="fas fa-trash"></i></a></p>
             {{/content_manage}}
-            <a href="#" class="btn btn-secondary">Add page</a>
+            <a href="?action=add&sid={{section_id}}" class="btn btn-secondary">Add page</a>
           </div>
         </div>
       {{/sections_manage}}
