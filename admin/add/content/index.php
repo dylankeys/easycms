@@ -45,6 +45,7 @@
       }
 
       $data['add_page']['section_id'] = $section_id;
+    }
   }
   else {
 
@@ -81,7 +82,6 @@
           $section_data['content_manage'][] = $content_data;
         }
       }
-
 
       $data['sections_manage'][] = $section_data;
     }
