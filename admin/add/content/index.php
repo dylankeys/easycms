@@ -87,4 +87,6 @@
     }
   }
 
-  echo $m->render($template, $data);
+  print_r($data);
+
+  //echo $m->render($template, $data);
