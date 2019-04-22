@@ -36,12 +36,12 @@
         $template_id = $dbRow["id"];
         $template_name = $dbRow["name"];
 
-        $template_data['templates'][] = array (
+        $template_data = array (
           'template_id' => $template_id,
           'template_name' => $template_name
         );
 
-        $data['add_page'][] = $template_data;
+        $data['add_page']['templates'][] = $template_data;
       }
 
       $data['add_page']['section_id'] = $section_id;
