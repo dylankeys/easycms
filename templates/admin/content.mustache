@@ -64,11 +64,29 @@
           </div>
         </div>
       {{/sections_manage}}
+
+
+      {{#add_page}}
+        <form action="index.php" method="post">
+          <div class="form-group">
+            <label for="page_name">Page name</label>
+            <input type="text" class="form-control" id="page_name" name="page_name">
+          </div>
+
+          <div class="form-group">
+            <label for="templates">Select page template</label>
+            <select class="form-control" id="templates" name="templates">
+              {{#templates}}
+                <option value="{{template_id}}">{{template_name}}</option>
+              {{/templates}}
+            </select>
+          </div>
+          <input type="hidden" name="section_id" value="{{section_id}}">
+          <input type="hidden" name="add_page">
+          <input type="submit" name="submit" class="form-control btn btn-secondary float-right">
+        </form>
+      {{/add_page}}
       <br>
-
-      
-
-
     </div>
 
     <footer class="blog-footer footer">
