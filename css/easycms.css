@@ -1,4 +1,8 @@
 /* EasyCMS Styles */
+body {
+	color: #008f22 !important;
+}
+
 .slideshow-left {
 	float: left;
 	width: 30%;
@@ -14,6 +18,14 @@
   clear: both;
 }
 
+.txt-primary {
+	color: #008f22 !important;
+}
+
+.txt-secondary {
+	color: #ffffff !important;
+}
+
 .bg-primary {
 	background-color: #008f22 !important;
 	color: #ffffff !important;
@@ -27,9 +39,19 @@
 .btn-primary {
 	background-color: #008f22 !important;
 	color: #ffffff !important;
+	border-color: #ffffff !important;
 }
 
 .btn-secondary {
 	background-color: #ffffff !important;
 	color: #008f22 !important;
+	border-color: #008f22 !important;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
 }
